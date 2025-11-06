@@ -1,0 +1,3 @@
+1;Darius;Corneciu;1;9000
+2;Ana;Popescu;2;2500
+3;Mihai;Ionescu;1;2500
