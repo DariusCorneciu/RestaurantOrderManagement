@@ -1,4 +1,4 @@
-package com.example.restaurantordermanagement;
+package com.example.restaurantordermanagement.controllers;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -9,6 +9,6 @@ public class HelloController {
 
     @FXML
     protected void onHelloButtonClick() {
-        welcomeText.setText("Welcome to JavaFX Application!");
+        welcomeText.setText("Test to work");
     }
 }

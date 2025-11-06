@@ -8,4 +8,6 @@ module com.example.restaurantordermanagement {
 
     opens com.example.restaurantordermanagement to javafx.fxml;
     exports com.example.restaurantordermanagement;
+    exports com.example.restaurantordermanagement.controllers;
+    opens com.example.restaurantordermanagement.controllers to javafx.fxml;
 }
