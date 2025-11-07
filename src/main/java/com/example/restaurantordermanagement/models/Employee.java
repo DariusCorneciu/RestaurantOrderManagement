@@ -50,6 +50,10 @@ public class Employee {
         return lastName;
     }
 
+    public int getSalary() {
+        return salary;
+    }
+
     public void setId(int id) {
         Id = id;
     }

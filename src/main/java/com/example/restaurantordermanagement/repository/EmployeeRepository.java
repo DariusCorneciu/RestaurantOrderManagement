@@ -87,6 +87,8 @@ public class EmployeeRepository {
             employeeDAO.delete(e);
         }
     }
+
+
     ///  Metode folosind strict lista
     /**
      * Metoda parcurge lista si cauta elementul dupa id.

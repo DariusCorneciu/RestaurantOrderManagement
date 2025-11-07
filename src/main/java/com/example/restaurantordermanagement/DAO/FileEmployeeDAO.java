@@ -50,7 +50,7 @@ public class FileEmployeeDAO implements EmployeeDAO {
 
                  /// Creeez obiectele de tipul Employee si le adaug in lista
                  Employee e = new Employee(id,firstName,lastName,jobId,salary);
-                 Employee.counterId++;
+                 Employee.counterId = id;
                  employees.add(e);
 
              }

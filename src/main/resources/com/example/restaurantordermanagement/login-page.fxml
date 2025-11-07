@@ -4,15 +4,29 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox alignment="CENTER" prefHeight="601.0" prefWidth="809.0" spacing="20.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.restaurantordermanagement.controllers.LoginController">
+<VBox alignment="CENTER" prefHeight="404.0" prefWidth="466.0" spacing="20.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.restaurantordermanagement.controllers.LoginController">
   <padding>
     <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
   </padding>
-
-
-  <Label fx:id="welcomeText" />
-  <Button onAction="#onHelloButtonClick" prefHeight="62.0" prefWidth="136.0" text="Hello!">
-      <opaqueInsets>
-         <Insets right="50.0" />
-      </opaqueInsets></Button>
+   <Label fx:id="loginProblems" text="" />
+   <TextField fx:id="usernameField" promptText="Username" visible="false" />
+   <PasswordField fx:id="passwordField" prefHeight="25.0" prefWidth="290.0" promptText="Password" visible="false" />
+   <Button fx:id="loginButton" mnemonicParsing="false" onAction="#onLoginButtonClick" text="Login" visible="false" />
+   <Pane prefHeight="59.0" prefWidth="426.0">
+      <children>
+         <HBox fx:id="component" layoutX="60.0" layoutY="14.0" prefHeight="39.0" prefWidth="307.0" spacing="100.0">
+            <children>
+              <Button onAction="#onTabelMateButtonClick" prefHeight="30.0" prefWidth="100.0" text="TabelMate">
+                  <opaqueInsets>
+                     <Insets right="50.0" />
+                  </opaqueInsets>
+               </Button>
+               <Button alignment="CENTER" mnemonicParsing="false" onAction="#onAdminButtonClick" prefHeight="30.0" prefWidth="100.0" text="Admin Panel" />
+            </children>
+            <opaqueInsets>
+               <Insets />
+            </opaqueInsets>
+         </HBox>
+      </children>
+   </Pane>
 </VBox>
