@@ -86,8 +86,10 @@ public class EmployeeService {
     }
 
     public List<String> showEmployee(){
+
+
         return employeeRepository.employees.stream()
-                .map(e->e.getId()+"|"+e.getFirstName()+" "+e.getLastName()
-                        +" ["+e.getJobId()+"]").toList();
+                .map(e-> e.toString()
+                        +" - "+e.GetJob().getJobName()+"").toList();
     }
 }

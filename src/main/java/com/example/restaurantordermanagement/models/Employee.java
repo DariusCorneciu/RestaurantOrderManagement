@@ -1,5 +1,9 @@
 package com.example.restaurantordermanagement.models;
 
+import com.example.restaurantordermanagement.utils.AppContext;
+import com.example.restaurantordermanagement.utils.ElementNotFoundException;
+import javafx.fxml.FXML;
+
 public class Employee {
 
     private int Id;
@@ -21,6 +25,12 @@ public class Employee {
 
     public Job GetJob(){
         if(job == null){
+
+            try{
+                this.job = AppContext.getJobService().getJobAtId(JobId);
+            } catch (ElementNotFoundException e) {
+                this.job = new Job(-1,e.getMessage());
+            }
 
         }
         return job;
@@ -61,4 +71,10 @@ public class Employee {
     public String GenerateTxtString(){
         return Id +";"+firstName+";"+lastName+";"+JobId+";"+salary+"\n";
     }
+    @Override
+    public String toString() {
+
+        return Id + "| " + firstName + " " + lastName + " | " + salary + " RON";
+    }
+
 }

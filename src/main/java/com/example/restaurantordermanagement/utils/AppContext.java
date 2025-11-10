@@ -2,8 +2,12 @@ package com.example.restaurantordermanagement.utils;
 
 import com.example.restaurantordermanagement.DAO.EmployeeDAO;
 import com.example.restaurantordermanagement.DAO.FileEmployeeDAO;
+import com.example.restaurantordermanagement.DAO.FileJobDAO;
+import com.example.restaurantordermanagement.DAO.JobDAO;
 import com.example.restaurantordermanagement.repository.EmployeeRepository;
+import com.example.restaurantordermanagement.repository.JobRepository;
 import com.example.restaurantordermanagement.service.EmployeeService;
+import com.example.restaurantordermanagement.service.JobService;
 
 /**
  * App context, o clasa singleton care are ca scop pasarea serviciilor in controllerele
@@ -21,13 +25,15 @@ public class AppContext {
 
     // DAO
     private static EmployeeDAO employeeDAO;
+    private static JobDAO jobDAO;
 
 
     // Repository
     private static EmployeeRepository employeeRepository;
-
+    private static JobRepository jobRepository;
     // Service
     private static EmployeeService employeeService;
+    private static JobService jobService;
 
     private AppContext(){}
 
@@ -43,5 +49,13 @@ public class AppContext {
             employeeService = new EmployeeService(employeeRepository);
         }
         return employeeService;
+    }
+    public static JobService getJobService(){
+        if(jobService == null){
+            jobDAO = new FileJobDAO();
+            jobRepository = new JobRepository(jobDAO);
+            jobService = new JobService(jobRepository);
+        }
+        return jobService;
     }
 }

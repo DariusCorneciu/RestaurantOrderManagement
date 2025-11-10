@@ -1,11 +1,10 @@
 package com.example.restaurantordermanagement.controllers;
 
 import com.example.restaurantordermanagement.models.Employee;
+import com.example.restaurantordermanagement.models.Job;
 import com.example.restaurantordermanagement.service.EmployeeService;
-import com.example.restaurantordermanagement.utils.AlreadyExistsException;
-import com.example.restaurantordermanagement.utils.AppContext;
-import com.example.restaurantordermanagement.utils.EmptyStringException;
-import com.example.restaurantordermanagement.utils.SameElementException;
+import com.example.restaurantordermanagement.service.JobService;
+import com.example.restaurantordermanagement.utils.*;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
@@ -30,7 +29,7 @@ public class EmployeesController {
     @FXML
     private TextField salaryField;
     @FXML
-    private ComboBox jobField;
+    private ComboBox<OptionComboBox> jobField;
     @FXML
     private Label errorProblem;
     @FXML
@@ -41,12 +40,14 @@ public class EmployeesController {
     @FXML
     private Button updateEmployeeButton;
    private EmployeeService employeeService;
+   private JobService jobService;
 
    @FXML
    public void initialize(){
        employeeService = AppContext.getEmployeeService();
+       jobService = AppContext.getJobService();
        generateEmployeesButtons();
-
+       populateComboBox();
 
 
    }
@@ -58,7 +59,7 @@ public class EmployeesController {
             labelEmployes.setText("");
         }
 
-        populateFormValues("","","");
+        populateFormValues("","","",-1);
         createEmployeeButton.setVisible(true);
         updateEmployeeButton.setVisible(false);
         createForm.setVisible(!createForm.isVisible());
@@ -72,7 +73,8 @@ public class EmployeesController {
        try{
            int salary = Integer.parseInt(salaryString);
 
-           Employee e = new Employee(-1,firstName,lastName,1,salary);
+           OptionComboBox selected = jobField.getSelectionModel().getSelectedItem();
+           Employee e = new Employee(-1,firstName,lastName,selected.getValue(),salary);
            employeeService.create(e);
            generateEmployeesButtons();
        } catch (NumberFormatException e) {
@@ -91,6 +93,14 @@ public class EmployeesController {
     }
 
 
+    private void populateComboBox(){
+
+
+       for(Job j:jobService.getAllJobs()){
+           jobField.getItems().add(new OptionComboBox(j.getId(),j.getJobName()));
+       }
+    }
+
 
 
     private void generateEmployeesButtons(){
@@ -101,7 +111,7 @@ public class EmployeesController {
             employeeRow.setAlignment(Pos.CENTER_LEFT);
             Label employeeLabel = new Label(employee);
 
-            employeeLabel.setPrefWidth(150);
+            employeeLabel.setPrefWidth(220);
             Button updateEmplyee = new Button("Update");
             Button deleteEmployee = new Button("Delete");
 
@@ -139,7 +149,7 @@ public class EmployeesController {
         }
         Employee e =employeeService.findEmployeeById(id);
         populateFormValues(e.getFirstName(),e.getLastName()
-                , String.valueOf(e.getSalary()));
+                , String.valueOf(e.getSalary()),e.getJobId());
 
         createForm.setVisible(!createForm.isVisible());
         createEmployeeButton.setVisible(false);
@@ -154,7 +164,8 @@ public class EmployeesController {
         try{
             int salary = Integer.parseInt(salaryString);
 
-            Employee e = new Employee(id,firstName,lastName,1,salary);
+
+            Employee e = new Employee(id,firstName,lastName,jobField.getValue().getValue(),salary);
             employeeService.update(e);
             generateEmployeesButtons();
         } catch (NumberFormatException e) {
@@ -176,10 +187,17 @@ public class EmployeesController {
        generateEmployeesButtons();
   }
 
-    private void populateFormValues(String firstName,String lastName,String salary){
+    private void populateFormValues(String firstName,String lastName,String salary, int employeeJobId){
         firstNameField.setText(firstName);
         lastNameField.setText(lastName);
         salaryField.setText(salary);
+        if(employeeJobId !=-1){
+            for(OptionComboBox option:jobField.getItems()){
+                if(option.getValue() == employeeJobId){
+                    jobField.getSelectionModel().select(option);
+                }
+            }
+        }
 
     }
 }
