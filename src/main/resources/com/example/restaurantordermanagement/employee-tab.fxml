@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.geometry.Insets?>
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.restaurantordermanagement.controllers.EmployeesController"
+            prefHeight="400.0" prefWidth="600.0">
+    <children>
+        <SplitPane dividerPositions="0.3" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <items>
+
+                <AnchorPane minWidth="200.0" prefWidth="200.0">
+                    <children>
+                        <Button onAction="#onShowFormButtonClick" prefHeight="34.0" text="Create Employee" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
+
+                        <ScrollPane AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="55.0">
+                            <content>
+                                <VBox fx:id="employeeListContainer" fillWidth="true" prefWidth="180.0" spacing="10.0">
+                                    <padding>
+                                        <Insets bottom="10" left="10" right="10" top="10" />
+                                    </padding>
+                                </VBox>
+                            </content>
+                        </ScrollPane>
+                    </children>
+                </AnchorPane>
+
+
+                <AnchorPane>
+                    <Label fx:id="labelEmployes" text="" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="20.0" />
+                    <AnchorPane fx:id="createForm" visible="false">
+                        <TextField fx:id="firstNameField" layoutX="14.0" layoutY="61.0" promptText="First Name" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="50.0" />
+                        <TextField fx:id="lastNameField" layoutX="14.0" layoutY="61.0" promptText="Last Name" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="90.0" />
+                        <TextField fx:id="salaryField" layoutX="14.0" layoutY="61.0" promptText="Salary" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="130.0" />
+                        <ComboBox fx:id="jobField" layoutX="20.0" layoutY="172.0" promptText="Job" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="170.0" />
+                        <Button fx:id="createEmployeeButton" minHeight="25.0" minWidth="149.0" onAction="#onCreateEmployeeButtonClick" text="Create" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="230.0" />
+                        <Button fx:id="updateEmployeeButton" minHeight="25.0" minWidth="149.0" text="Update" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="230.0" />
+
+                        <Label fx:id="errorProblem" text="" textFill="red" AnchorPane.leftAnchor="190.0" AnchorPane.topAnchor="235.0" />
+                    </AnchorPane>
+
+                </AnchorPane>
+
+            </items>
+        </SplitPane>
+    </children>
+</AnchorPane>

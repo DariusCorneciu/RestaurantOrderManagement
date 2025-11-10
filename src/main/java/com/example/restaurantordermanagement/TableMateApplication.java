@@ -7,11 +7,11 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class HelloApplication extends Application {
+public class TableMateApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 900, 600);
+        FXMLLoader fxmlLoader = new FXMLLoader(TableMateApplication.class.getResource("admin-panel.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
         stage.setTitle("TableMate");
         stage.setScene(scene);
         stage.show();
