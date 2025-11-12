@@ -2,12 +2,12 @@ package com.example.restaurantordermanagement.service;
 
 import com.example.restaurantordermanagement.controllers.EmployeesController;
 import com.example.restaurantordermanagement.models.Employee;
+import com.example.restaurantordermanagement.models.Job;
 import com.example.restaurantordermanagement.repository.EmployeeRepository;
-import com.example.restaurantordermanagement.utils.AlreadyExistsException;
-import com.example.restaurantordermanagement.utils.ElementNotFoundException;
-import com.example.restaurantordermanagement.utils.EmptyStringException;
-import com.example.restaurantordermanagement.utils.SameElementException;
+import com.example.restaurantordermanagement.utils.*;
+import javafx.util.Pair;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class EmployeeService {
@@ -86,8 +86,34 @@ public class EmployeeService {
     }
 
     public List<String> showEmployee(){
+
+
         return employeeRepository.employees.stream()
-                .map(e->e.getId()+"|"+e.getFirstName()+" "+e.getLastName()
-                        +" ["+e.getJobId()+"]").toList();
+                .map(e-> e.toString()
+                        +" - "+e.GetJob().getJobName()+"").toList();
+    }
+
+    public List<JobRow> countEmployeesForAllJobs(){
+           List<JobRow> jobRows = new ArrayList<>();
+
+           List<Job> jobList = AppContext.getJobService().getAllJobs();
+
+
+           for(Job j: jobList) {
+               String name = j.getJobName();
+               long number = employeeRepository
+                       .filterEmployeesByJob(j.getId()).stream().count();
+               jobRows.add(
+                       new JobRow(name, number)
+               );
+
+           }
+
+           return jobRows;
+    }
+    public long countEmployeeAtJobById(int id){
+        return employeeRepository.filterEmployeesByJob(id)
+                .stream()
+                .count();
     }
 }
