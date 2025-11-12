@@ -5,6 +5,7 @@ import com.example.restaurantordermanagement.models.Job;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -19,20 +20,30 @@ public class FileJobDAO implements JobDAO{
        try(Scanner cin = new Scanner(new File(filePath))){
            while(cin.hasNextLine()){
                String data = cin.nextLine();
-               System.out.println(data);
+              // System.out.println(data);
+               if(data.isEmpty()) continue;
+
                String[] columns = data.split(";");
 
+               if(columns.length < 2){
+                   throw new IOException("Linia "+data+" are format incorect!");
+               }
                int id = Integer.parseInt(columns[0]);
                String jobName = columns[1];
                Job newJob = new Job(id,jobName);
                jobs.add(newJob);
-               Job.counterId = id;
+
            }
        } catch (Exception e) {
            e.printStackTrace();
            System.out.println(e.getMessage());
 
        }
+       //poate nu e sortat fisierul si sa fiu sigur ca aleg maximul la counterId
+        Job.counterId = jobs.stream()
+                .map(e->e.getId())
+                .max(Integer::compareTo)
+                .orElse(0);
         return jobs;
     }
 

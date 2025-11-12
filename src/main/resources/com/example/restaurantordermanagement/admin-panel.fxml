@@ -38,11 +38,21 @@
                   </content>
               </Tab>
 
-              <Tab text="Vedem">
+              <Tab text="Job">
                   <content>
-                      <AnchorPane>
-                          <Label layoutX="20" layoutY="20" text="A doua fila (Vedem)" />
-                      </AnchorPane>
+
+                          <fx:include source="job-tab.fxml" />
+
+                  </content>
+              </Tab>
+              <Tab text="Invoice">
+                  <content>
+                      <fx:include source="invoice-tab.fxml" />
+                  </content>
+              </Tab>
+              <Tab text="Storage">
+                  <content>
+                      <fx:include source="storage-tab.fxml" />
                   </content>
               </Tab>
           </tabs>

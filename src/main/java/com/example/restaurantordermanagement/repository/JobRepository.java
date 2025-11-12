@@ -37,8 +37,17 @@ public class JobRepository {
         int index = jobList.indexOf(job);
         if(index != -1){
             jobList.remove(index);
-            jobDAO.update(job);
+            jobDAO.delete(job);
         }
+    }
+    public Job findElementByName(String name){
+        //Job jobToReturn = null;
+        for(Job j:jobList){
+            if(j.getJobName().toLowerCase().contains(name)){
+                return j;
+            }
+        }
+        return null;
     }
 
     public Job findElementById(int id){
@@ -52,7 +61,7 @@ public class JobRepository {
     }
     public boolean jobExists(String jobName){
         return jobList.stream()
-                .anyMatch(e->e.getJobName() ==jobName);
+                .anyMatch(e->e.getJobName().toLowerCase().equals(jobName.toLowerCase()));
     }
     public List<Job> allJobs(){
         //trimit o lista

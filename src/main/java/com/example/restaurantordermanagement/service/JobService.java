@@ -2,6 +2,7 @@ package com.example.restaurantordermanagement.service;
 
 import com.example.restaurantordermanagement.models.Job;
 import com.example.restaurantordermanagement.repository.JobRepository;
+import com.example.restaurantordermanagement.utils.AppContext;
 import com.example.restaurantordermanagement.utils.ElementNotFoundException;
 import com.example.restaurantordermanagement.utils.EmptyStringException;
 import com.example.restaurantordermanagement.utils.SameElementException;
@@ -52,8 +53,9 @@ public class JobService {
             throw new EmptyStringException("Job Name is empty or blank!");
         }
 
+
         Job realJob = jobRepository.findElementById(job.getId());
-        if(realJob.getJobName() == job.getJobName()){
+        if(jobRepository.jobExists(job.getJobName())){
             throw new SameElementException("Same job, no need to update!");
         }
         jobRepository.update(job);
@@ -62,6 +64,18 @@ public class JobService {
 
     public List<Job> getAllJobs(){
         return jobRepository.allJobs();
+    }
+
+    public Job findJob(String name){
+        if(name == null || name.isBlank()){
+            throw new EmptyStringException("Search field is invalid!");
+        }
+
+        Job j = jobRepository.findElementByName(name.toLowerCase());
+        if(j == null){
+            throw new ElementNotFoundException("The job you searched does not exists!");
+        }
+        return j;
     }
 
 
