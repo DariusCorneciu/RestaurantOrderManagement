@@ -7,7 +7,8 @@ module com.example.restaurantordermanagement {
     requires org.kordamp.bootstrapfx.core;
    // requires com.example.restaurantordermanagement;
     requires javafx.graphics;
-   // requires com.example.restaurantordermanagement;
+    requires com.example.restaurantordermanagement;
+    // requires com.example.restaurantordermanagement;
     // requires com.example.restaurantordermanagement;
     // requires com.example.restaurantordermanagement;
     // requires com.example.restaurantordermanagement;

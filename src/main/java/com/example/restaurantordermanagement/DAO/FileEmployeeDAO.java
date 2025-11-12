@@ -25,7 +25,8 @@ public class FileEmployeeDAO implements EmployeeDAO {
     /**
      * Citeste toti angajatii din fisierul employees.txt
      * si returneaza o lista de obiecte Employee.
-     *
+     * @author Darius Corneciu
+     * @since 2025-11-12
      * @return lista de angajati
      */
     @Override
@@ -136,7 +137,7 @@ public class FileEmployeeDAO implements EmployeeDAO {
     /**
      * Metoda folosita intern pentru a avea un cod mai curat, aceasta primeste o lista si suprascrie
      * fisierul text aflat la FilePath
-     * @param employees obiectul primit care trebuie sters din lista
+     * @param employees lista primita pentru a fii salvata
      * @author Darius Corneciu
      * @since 2025-11-06
      * @version 1.0
