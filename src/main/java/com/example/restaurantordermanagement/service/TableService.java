@@ -1,5 +1,6 @@
 package com.example.restaurantordermanagement.service;
 
+import com.example.restaurantordermanagement.models.Clocking;
 import com.example.restaurantordermanagement.models.Employee;
 import com.example.restaurantordermanagement.models.Job;
 import com.example.restaurantordermanagement.models.Table;
@@ -48,6 +49,10 @@ public class TableService {
             throw new ElementNotFoundException("There is no table with the "+id);
         }
         tableRepository.delete(table);
+    }
+
+    public List<Table> getAllTable(){
+        return tableRepository.allTables();
     }
 
     public boolean hasActiveOrder(){

@@ -20,6 +20,13 @@ public class Clocking {
         this.clockout = clockout;
     }
 
+    public Clocking(Clocking other) {
+        this.id = other.id;
+        this.employeeId = other.employeeId;
+        this.clockin = other.clockin;
+        this.clockout = other.clockout;
+    }
+
     public int getId() {
         return id;
     }
@@ -34,7 +41,7 @@ public class Clocking {
 
     public Employee getEmployee() {
         if(employee == null){
-            employee = AppContext.getEmployeeService().findEmployeeById(id);
+            employee = AppContext.getEmployeeService().findEmployeeById(employeeId);
         }
         return employee;
     }
@@ -45,6 +52,10 @@ public class Clocking {
 
     public LocalDateTime getClockout() {
         return clockout;
+    }
+
+    public void setClockout(LocalDateTime clockout) {
+        this.clockout = clockout;
     }
 
     @Override

@@ -4,34 +4,31 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox xmlns="http://javafx.com/javafx/17.0.12"
-      xmlns:fx="http://javafx.com/fxml/1"
-    >
+<VBox fx:controller="com.example.restaurantordermanagement.controllers.LoginController" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1">
 
     <children>
-        <TabPane VBox.vgrow="ALWAYS" tabClosingPolicy="UNAVAILABLE">
+      <HBox fx:id="component"  alignment="TOP_RIGHT" prefHeight="27.0" prefWidth="608.0">
+         <children>
+            <Button onAction="#goBackFromButtonCick" mnemonicParsing="false" text="Back to Login" />
+         </children>
+         <padding>
+            <Insets bottom="10.0" right="20.0" top="20.0" />
+         </padding>
+      </HBox>
+        <TabPane tabClosingPolicy="UNAVAILABLE" VBox.vgrow="ALWAYS">
             <tabs>
                 <Tab text="TabelMate">
                     <content>
-                        <fx:include source="tabel-control.fxml"
-                                    AnchorPane.topAnchor="0.0"
-                                    AnchorPane.bottomAnchor="0.0"
-                                    AnchorPane.leftAnchor="0.0"
-                                    AnchorPane.rightAnchor="0.0" />
+                        <fx:include source="tabel-control.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                     </content>
                 </Tab>
 
                 <Tab text="Employee-Clock-in/out">
                     <content>
-                        <fx:include source="clock-form.fxml"
-                                    AnchorPane.topAnchor="0.0"
-                                    AnchorPane.bottomAnchor="0.0"
-                                    AnchorPane.leftAnchor="0.0"
-                                    AnchorPane.rightAnchor="0.0" />
+                        <fx:include source="clock-form.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                     </content>
                 </Tab>
             </tabs>
         </TabPane>
     </children>
 </VBox>
-

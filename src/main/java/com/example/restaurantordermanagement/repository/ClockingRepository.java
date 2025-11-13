@@ -4,6 +4,7 @@ import com.example.restaurantordermanagement.DAO.ClockingDAO;
 import com.example.restaurantordermanagement.models.Clocking;
 import com.example.restaurantordermanagement.models.Table;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -50,8 +51,34 @@ public class ClockingRepository {
         }
         return null;
     }
-    public List<Clocking> allTables(){
+    public List<Clocking> allClocksFromToday(){
         //trimit o lista
-        return Collections.unmodifiableList(clockingsList);
+
+        LocalDate today = LocalDate.now();
+
+        return Collections.unmodifiableList(
+                clockingsList.stream()
+                        .filter(c -> c.getClockin().toLocalDate().equals(today) && c.getClockout() == null)
+                        .toList()
+        );
+    }
+    public List<Clocking> allClocksOfAnEmployee(int employeeId){
+
+
+        return Collections.unmodifiableList(
+                clockingsList.stream()
+                        .filter(e->e.getEmployeeId() == employeeId)
+                        .toList()
+        );
+    }
+
+
+    public boolean isClockedIn(int employeeId) {
+        LocalDate today = LocalDate.now();
+
+        return clockingsList.stream()
+                .filter(e -> e.getEmployeeId() == employeeId)
+                .filter(e -> e.getClockin().toLocalDate().equals(today))
+                .anyMatch(e -> e.getClockout() == null);
     }
 }

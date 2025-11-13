@@ -30,7 +30,11 @@ public class FileClockingDAO implements ClockingDAO {
                 int id = Integer.parseInt(columns[0]);
                 int employeeId = Integer.parseInt(columns[1]);
                 LocalDateTime clockin = LocalDateTime.parse(columns[2]);
-                LocalDateTime clockout = LocalDateTime.parse(columns[3]);
+                LocalDateTime clockout = null;
+                if(!columns[3].equals("null")){
+                  clockout = LocalDateTime.parse(columns[3]);
+                }
+
 
                 clockings.add(new Clocking(id,employeeId,clockin,clockout));
 
@@ -40,10 +44,11 @@ public class FileClockingDAO implements ClockingDAO {
             e.printStackTrace();
             System.out.println(e.getMessage());
         }
-        Table.counterId = clockings.stream()
+        Clocking.counterId = clockings.stream()
                 .map(e->e.getId())
                 .max(Integer::compareTo)
                 .orElse(0);
+
 
         return clockings;
     }

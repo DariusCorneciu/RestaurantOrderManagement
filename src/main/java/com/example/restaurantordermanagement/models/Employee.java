@@ -59,6 +59,9 @@ public class Employee {
     public String getLastName() {
         return lastName;
     }
+    public String getFullName(){
+        return firstName + " "+lastName;
+    }
 
     public int getSalary() {
         return salary;

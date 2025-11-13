@@ -12,7 +12,7 @@
    <TextField maxWidth="300" fx:id="usernameField" promptText="Username" visible="false" />
    <PasswordField maxWidth="300" fx:id="passwordField" prefHeight="25.0" prefWidth="290.0" promptText="Password" visible="false" />
    <Button fx:id="loginButton" mnemonicParsing="false" onAction="#onLoginButtonClick" text="Login" visible="false" />
-   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
+   <HBox fx:id="component"  alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
       <children>
          <Button alignment="CENTER" mnemonicParsing="false" onAction="#onAdminButtonClick" prefHeight="30.0" prefWidth="100.0" text="Admin Panel" />
         <Button onAction="#onTabelMateButtonClick" prefHeight="30.0" prefWidth="100.0" text="TabelMate">

@@ -52,7 +52,9 @@ public class EmployeeService {
 
     public void deleteEmployee(int id){
        Employee e = findEmployeeById(id);
+        AppContext.getClockingService().deleteallClockingsOfAnEmployee(e.getId());
         employeeRepository.delete(e);
+
     }
 
     public Employee findEmployeeById(int id){
