@@ -1,13 +1,8 @@
 package com.example.restaurantordermanagement.utils;
 
-import com.example.restaurantordermanagement.DAO.EmployeeDAO;
-import com.example.restaurantordermanagement.DAO.FileEmployeeDAO;
-import com.example.restaurantordermanagement.DAO.FileJobDAO;
-import com.example.restaurantordermanagement.DAO.JobDAO;
-import com.example.restaurantordermanagement.repository.EmployeeRepository;
-import com.example.restaurantordermanagement.repository.JobRepository;
-import com.example.restaurantordermanagement.service.EmployeeService;
-import com.example.restaurantordermanagement.service.JobService;
+import com.example.restaurantordermanagement.DAO.*;
+import com.example.restaurantordermanagement.repository.*;
+import com.example.restaurantordermanagement.service.*;
 
 /**
  * App context, o clasa singleton care are ca scop pasarea serviciilor in controllerele
@@ -23,18 +18,13 @@ import com.example.restaurantordermanagement.service.JobService;
  */
 public class AppContext {
 
-    // DAO
-    private static EmployeeDAO employeeDAO;
-    private static JobDAO jobDAO;
 
-
-    // Repository
-    private static EmployeeRepository employeeRepository;
-    private static JobRepository jobRepository;
     // Service
     private static EmployeeService employeeService;
     private static JobService jobService;
-
+    private static ProductService productService;
+    private static TableService tableService;
+    private static ClockingService clockingService;
     private AppContext(){}
 
     /**
@@ -44,18 +34,44 @@ public class AppContext {
      */
     public static EmployeeService getEmployeeService(){
         if(employeeService == null){
-            employeeDAO = new FileEmployeeDAO();
-            employeeRepository = new EmployeeRepository(employeeDAO);
+            // DAO
+            EmployeeDAO employeeDAO = new FileEmployeeDAO();
+            // Repository
+            EmployeeRepository employeeRepository = new EmployeeRepository(employeeDAO);
             employeeService = new EmployeeService(employeeRepository);
         }
         return employeeService;
     }
     public static JobService getJobService(){
         if(jobService == null){
-            jobDAO = new FileJobDAO();
-            jobRepository = new JobRepository(jobDAO);
+            JobDAO jobDAO = new FileJobDAO();
+            JobRepository jobRepository = new JobRepository(jobDAO);
             jobService = new JobService(jobRepository);
         }
         return jobService;
+    }
+    public static ProductService getProductService(){
+        if(productService == null){
+            ProductDAO productDAO = new FileProductDAO();
+            ProductRepository productRepository = new ProductRepository(productDAO);
+            productService = new ProductService(productRepository);
+        }
+        return productService;
+    }
+    public static TableService getTableService(){
+        if(tableService == null){
+            TableDAO tableDAO = new FileTableDAO();
+            TableRepository tableRepository = new TableRepository(tableDAO);
+            tableService = new TableService(tableRepository);
+        }
+        return tableService;
+    }
+    public static ClockingService getClockingService(){
+        if(clockingService == null){
+            ClockingDAO clockingDAO = new FileClockingDAO();
+            ClockingRepository clockingRepository = new ClockingRepository(clockingDAO);
+            clockingService = new ClockingService(clockingRepository);
+        }
+        return clockingService;
     }
 }

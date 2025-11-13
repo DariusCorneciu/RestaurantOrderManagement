@@ -1,2 +1,1 @@
-2;Ana;Popescu;3;2500
-3;Test;Darius;1;30003
+1;Corneciu;Darius;0;3000

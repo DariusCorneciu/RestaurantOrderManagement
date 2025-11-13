@@ -116,4 +116,13 @@ public class EmployeeService {
                 .stream()
                 .count();
     }
+    public List<Employee> filterEmployeesByJob(int jobId){
+        try{
+           AppContext.getJobService().getJobAtId(jobId);
+            return employeeRepository.filterEmployeesByJob(jobId);
+        } catch (ElementNotFoundException e) {
+            return new ArrayList<>();
+        }
+
+    }
 }

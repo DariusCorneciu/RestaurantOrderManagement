@@ -1,3 +1,4 @@
+0;Unemployed
 1;Manager
 2;Waiter
 3;Bartender
