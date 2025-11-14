@@ -52,7 +52,9 @@ public class EmployeeService {
 
     public void deleteEmployee(int id){
        Employee e = findEmployeeById(id);
+        AppContext.getClockingService().deleteallClockingsOfAnEmployee(e.getId());
         employeeRepository.delete(e);
+
     }
 
     public Employee findEmployeeById(int id){
@@ -115,5 +117,14 @@ public class EmployeeService {
         return employeeRepository.filterEmployeesByJob(id)
                 .stream()
                 .count();
+    }
+    public List<Employee> filterEmployeesByJob(int jobId){
+        try{
+           AppContext.getJobService().getJobAtId(jobId);
+            return employeeRepository.filterEmployeesByJob(jobId);
+        } catch (ElementNotFoundException e) {
+            return new ArrayList<>();
+        }
+
     }
 }

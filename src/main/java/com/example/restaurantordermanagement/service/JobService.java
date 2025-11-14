@@ -1,5 +1,6 @@
 package com.example.restaurantordermanagement.service;
 
+import com.example.restaurantordermanagement.models.Employee;
 import com.example.restaurantordermanagement.models.Job;
 import com.example.restaurantordermanagement.repository.JobRepository;
 import com.example.restaurantordermanagement.utils.AppContext;
@@ -43,6 +44,14 @@ public class JobService {
         if(job == null){
             throw new ElementNotFoundException("There is no job with the "+id);
         }
+       List<Employee> employeeList = AppContext.getEmployeeService().filterEmployeesByJob(job.getId());
+        for(Employee emp:employeeList){
+            Employee tempEmp = new Employee(emp.getId(),
+                    emp.getFirstName(),
+                    emp.getLastName(), 0,emp.getSalary());
+            AppContext.getEmployeeService().update(tempEmp);
+
+        }
         jobRepository.delete(job);
     }
 
@@ -77,6 +86,7 @@ public class JobService {
         }
         return j;
     }
+
 
 
 }

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.restaurantordermanagement.controllers.TabelMateController">
+<children>
+<BorderPane layoutX="147.0" layoutY="64.0" AnchorPane.bottomAnchor=".0" AnchorPane.leftAnchor=".0" AnchorPane.rightAnchor=".0" AnchorPane.topAnchor=".0">
+    <bottom>
+        <VBox prefHeight="85.0" BorderPane.alignment="CENTER">
+            <children>
+                  <Separator prefWidth="200.0" />
+                  <Button onAction="#refreshOrders" mnemonicParsing="false" text="Refresh" />
+                <Label alignment="TOP_CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="608.0" text="Active Orders" textAlignment="CENTER" />
+                <HBox fx:id="hBoxOrders" prefHeight="84.0" prefWidth="600.0" spacing="20.0">
+                     <children>
+                        
+
+                     </children>
+                     <padding>
+                        <Insets bottom="10.0" />
+                     </padding></HBox>
+            </children>
+        </VBox>
+
+    </bottom>
+    <center>
+        <Pane fx:id="tablePane" prefHeight="315.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+            <children>
+
+            </children>
+        </Pane>
+    </center>
+         <top>
+            <Label text="Tabel Management System" BorderPane.alignment="CENTER">
+               <font>
+                  <Font size="33.0" />
+               </font>
+            </Label>
+         </top>
+</BorderPane>
+</children>
+
+</AnchorPane>
