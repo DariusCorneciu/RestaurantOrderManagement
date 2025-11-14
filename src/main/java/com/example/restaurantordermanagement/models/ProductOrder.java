@@ -4,7 +4,7 @@ import com.example.restaurantordermanagement.utils.AppContext;
 
 import java.util.Objects;
 
-public class ProductOrder {
+public class ProductOrder implements Comparable<ProductOrder>{
 
     private int id;
     private int productId;
@@ -82,5 +82,8 @@ public class ProductOrder {
         return id == that.id;
     }
 
-
+    @Override
+    public int compareTo(ProductOrder o) {
+        return Integer.compare(this.quantity, o.quantity);
+    }
 }

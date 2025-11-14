@@ -1,9 +1,6 @@
 package com.example.restaurantordermanagement.controllers;
 
-import com.example.restaurantordermanagement.models.Order;
-import com.example.restaurantordermanagement.models.Product;
-import com.example.restaurantordermanagement.models.ProductOrder;
-import com.example.restaurantordermanagement.models.Table;
+import com.example.restaurantordermanagement.models.*;
 import com.example.restaurantordermanagement.service.*;
 import com.example.restaurantordermanagement.utils.AppContext;
 import com.example.restaurantordermanagement.utils.ElementNotFoundException;
@@ -18,6 +15,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.TextAlignment;
 
+import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -100,6 +98,9 @@ public class TabelMateController {
                 orderService.closeOrder(orderId);
                 refreshOrders();
                 tableButton.setOnAction(e->handleClicknotReserved(tableButton,tableId));
+
+                String code = java.util.UUID.randomUUID().toString().replace("-", "").substring(0, 8);
+                AppContext.getReceiptService().create(new Receipt(-1,orderId,code, LocalDate.now(),0));
 
             } else if (type == cancel) {
                }

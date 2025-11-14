@@ -1,16 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            prefHeight="400.0" prefWidth="600.0">
-    <Label>Aici trebuie sa apara lista cu toate comenzile din ziua respectiva, si un buton care ar genera un pdf pentru contabilitate</Label>
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.restaurantordermanagement.controllers.InvoceController">
+   <children>
+      <BorderPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0">
+         <left>
+            <VBox prefHeight="383.0" prefWidth="125.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Label text="Top Menu Products" />
+                   <ListView fx:id="topProductsList" prefWidth="125" prefHeight="365" />
+               </children>
+            </VBox>
+         </left>
+         <center>
+             <ScrollPane prefHeight="200.0" prefWidth="200.0"
+                         hbarPolicy="AS_NEEDED"
+                         vbarPolicy="NEVER"
+                         fitToWidth="false"
+                         fitToHeight="true">
 
+                 <content>
+                     <HBox fx:id="hboxInvoice"
+                           spacing="20"
+                           prefHeight="200.0"
+                           prefWidth="800.0" />
+                 </content>
 
-    <Label>Pagina in lucru...</Label>
+             </ScrollPane>
+         </center>
+         <top>
+            <HBox prefHeight="38.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Button onAction="#refresh" mnemonicParsing="false" text="Refresh" />
+                  <Label text="Invoice History">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                     <padding>
+                        <Insets left="160.0" />
+                     </padding>
+                  </Label>
+               </children>
+            </HBox>
+         </top></BorderPane>
+   </children>
 </AnchorPane>
