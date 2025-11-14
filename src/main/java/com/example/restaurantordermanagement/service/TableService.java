@@ -55,7 +55,19 @@ public class TableService {
         return tableRepository.allTables();
     }
 
-    public boolean hasActiveOrder(){
-        return false;
+    public Table getTableAtId(int tableId){
+        Table t = tableRepository.findElementById(tableId);
+        if(t == null){
+            throw  new ElementNotFoundException("Tabel with "+tableId+"does not exists!");
+        }
+        return t;
+
+    }
+
+    public int hasActiveOrder(int tableId){
+        int id = AppContext.getOrderService().tableHasActiveOrder(tableId);
+        System.out.println(tableId+" "+id);
+        return id;
+
     }
 }

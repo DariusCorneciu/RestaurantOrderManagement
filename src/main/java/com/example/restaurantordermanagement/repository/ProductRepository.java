@@ -52,6 +52,7 @@ public class ProductRepository {
     }
     public List<Product> allProducts(){
         //trimit o lista
+        System.out.println(productList.stream().count());
         return Collections.unmodifiableList(productList);
     }
 }

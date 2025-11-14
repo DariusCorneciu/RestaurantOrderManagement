@@ -144,7 +144,8 @@ public class FileEmployeeDAO implements EmployeeDAO {
      * @see com.example.restaurantordermanagement.models.Employee
      */
     private void saveAll(ArrayList<Employee> employees){
-        try(BufferedWriter writer = new BufferedWriter(new FileWriter(filePath,false))){
+        try(BufferedWriter writer = new BufferedWriter(
+                new FileWriter(filePath,false))){
             for(Employee e: employees){
                 writer.write(e.GenerateTxtString());
             }

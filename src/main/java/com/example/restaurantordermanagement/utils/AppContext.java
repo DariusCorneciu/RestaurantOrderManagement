@@ -25,6 +25,8 @@ public class AppContext {
     private static ProductService productService;
     private static TableService tableService;
     private static ClockingService clockingService;
+    private static ProductOrderService productOrderService;
+    private static OrderService orderService;
     private AppContext(){}
 
     /**
@@ -74,4 +76,22 @@ public class AppContext {
         }
         return clockingService;
     }
+
+    public static ProductOrderService getProductOrderService(){
+        if(productOrderService == null){
+            ProductOrderDAO productOrderDAO = new FileProductOrderDTO();
+            ProductOrderRepository productOrderRepository = new ProductOrderRepository(productOrderDAO);
+            productOrderService = new ProductOrderService(productOrderRepository);
+        }
+        return productOrderService;
+    }
+    public static OrderService getOrderService(){
+        if(orderService == null){
+            OrderDAO orderDAO = new FileOrderDAO();
+            OrderRepository productOrderRepository = new OrderRepository(orderDAO);
+            orderService = new OrderService(productOrderRepository);
+        }
+        return orderService;
+    }
+
 }

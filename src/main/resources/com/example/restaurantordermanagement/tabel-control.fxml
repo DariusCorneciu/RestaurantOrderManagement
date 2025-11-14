@@ -12,23 +12,19 @@
         <VBox prefHeight="85.0" BorderPane.alignment="CENTER">
             <children>
                   <Separator prefWidth="200.0" />
+                  <Button onAction="#refreshOrders" mnemonicParsing="false" text="Refresh" />
                 <Label alignment="TOP_CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="608.0" text="Active Orders" textAlignment="CENTER" />
-                <HBox  prefHeight="84.0" prefWidth="600.0">
+                <HBox fx:id="hBoxOrders" prefHeight="84.0" prefWidth="600.0" spacing="20.0">
                      <children>
-                        <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" spacing="10.0">
-                           <children>
-                              <Label text="Order X at Table Name" textAlignment="CENTER" wrapText="true" />
-                              <Label text="By Full Name" />
-                              <Separator prefWidth="200.0" />
-                              <Button mnemonicParsing="false" text="Add Somethig" />
-                           </children>
-                           <padding>
-                              <Insets bottom="10.0" top="10.0" />
-                           </padding>
-                        </VBox>
-                     </children></HBox>
+                        
+
+                     </children>
+                     <padding>
+                        <Insets bottom="10.0" />
+                     </padding></HBox>
             </children>
         </VBox>
+
     </bottom>
     <center>
         <Pane fx:id="tablePane" prefHeight="315.0" prefWidth="600.0" BorderPane.alignment="CENTER">
