@@ -26,6 +26,7 @@ public class AppContext {
     private static TableService tableService;
     private static ClockingService clockingService;
     private static ProductOrderService productOrderService;
+    private static ReceiptService receiptService;
     private static OrderService orderService;
     private AppContext(){}
 
@@ -92,6 +93,15 @@ public class AppContext {
             orderService = new OrderService(productOrderRepository);
         }
         return orderService;
+    }
+
+    public static ReceiptService getReceiptService(){
+        if(receiptService == null){
+            ReceiptDAO receiptDAO = new FileReceiptDAO();
+            ReceiptRepository receiptRepository = new ReceiptRepository(receiptDAO);
+            receiptService = new ReceiptService(receiptRepository);
+        }
+        return receiptService;
     }
 
 }

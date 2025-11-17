@@ -8,6 +8,7 @@ import com.example.restaurantordermanagement.repository.ProductOrderRepository;
 import com.example.restaurantordermanagement.utils.AppContext;
 import com.example.restaurantordermanagement.utils.ElementNotFoundException;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
@@ -28,6 +29,10 @@ public class ProductOrderService {
     public void deleteProductOrder(int id){
         ProductOrder po = productOrderRepository.findElementById(id);
         productOrderRepository.delete(po);
+    }
+
+    public List<ProductOrder> getAllProductOrders(){
+        return productOrderRepository.allProducts();
     }
 
     public void adjustProductQuantities(Order order,

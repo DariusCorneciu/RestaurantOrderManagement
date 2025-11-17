@@ -50,11 +50,7 @@
                       <fx:include source="invoice-tab.fxml" />
                   </content>
               </Tab>
-              <Tab text="Storage">
-                  <content>
-                      <fx:include source="storage-tab.fxml" />
-                  </content>
-              </Tab>
+
           </tabs>
       </TabPane>
 

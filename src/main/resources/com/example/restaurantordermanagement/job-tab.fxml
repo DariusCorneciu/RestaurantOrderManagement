@@ -65,7 +65,7 @@
               </TableView>
           </left>
          <center>
-            <PieChart prefHeight="209.0" prefWidth="266.0" BorderPane.alignment="CENTER" />
+            <PieChart fx:id="jobPieChart" prefHeight="209.0" prefWidth="266.0" BorderPane.alignment="CENTER" />
          </center>
           <right>
               <VBox fx:id="jobForm" visible="false" spacing="10.0" alignment="CENTER_LEFT" BorderPane.alignment="CENTER">

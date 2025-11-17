@@ -1,6 +1,8 @@
 package com.example.restaurantordermanagement.controllers;
 
+import com.example.restaurantordermanagement.models.Employee;
 import com.example.restaurantordermanagement.models.Job;
+import com.example.restaurantordermanagement.models.Order;
 import com.example.restaurantordermanagement.repository.EmployeeRepository;
 import com.example.restaurantordermanagement.service.EmployeeService;
 import com.example.restaurantordermanagement.service.JobService;
@@ -8,9 +10,13 @@ import com.example.restaurantordermanagement.utils.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.chart.PieChart;
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 
 public class JobController {
@@ -36,7 +42,8 @@ public class JobController {
 
     @FXML
     private Button formJobButton;
-
+    @FXML
+    private PieChart jobPieChart;
     @FXML
     private VBox jobForm;
     private final EmployeeService employeeService = AppContext.getEmployeeService();
@@ -183,6 +190,8 @@ public class JobController {
             jobComboBox.getItems().add(new OptionComboBox(j.getId(),j.getJobName()));
         }
     }
+
+
 
 
 }
